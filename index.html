@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PEQUENO PLANTA | Urban Bakery</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&amp;family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    
+    <b:skin><![CDATA[
+:root {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --accent-color: #333;
+  --text-color: #000;
+  --bg-color: #fff;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --container-width: 1200px;
+  --spacing: 20px;
+  --border-thick: 3px solid #000;
+  --border-thin: 1px solid #000;
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Utility Classes */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing);
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  border: var(--border-thick);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: var(--border-thick);
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Header */
+.header {
+  background-color: var(--secondary-color);
+  border-bottom: var(--border-thick);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.logo-img {
+  height: 70px; /* Adjust based on logo aspect ratio */
+  width: auto;
+}
+
+.nav-list {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.icon-link {
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%; /* Keeping round for badge */
+  font-weight: bold;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  background: url('hero.svg') no-repeat center center/cover; /* Use created SVG */
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--secondary-color);
+  position: relative;
+  border-bottom: var(--border-thick);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Darker overlay for urban feel */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0px #000;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Products Section */
+.products {
+  padding: 80px 0;
+  background-color: var(--bg-color);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.product-card {
+  background-color: var(--secondary-color);
+  border: var(--border-thick);
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 5px 5px 0px #000;
+}
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  border-bottom: var(--border-thick);
+  padding: 20px;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-image img {
+    height: 200px;
+    width: auto;
+}
+
+.add-to-cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.product-card:hover .add-to-cart {
+  transform: translateY(0);
+}
+
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.product-price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* Newsletter Section */
+.newsletter {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 60px 0;
+  text-align: center;
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+}
+
+.newsletter h2 {
+  font-family: var(--font-heading);
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+.newsletter p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: 0; /* No gap for connected look */
+}
+
+.newsletter-form input {
+  padding: 15px;
+  border: none;
+  width: 350px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.newsletter-form button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  padding: 15px 30px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.newsletter-form button:hover {
+    background-color: #ccc;
+}
+
+/* Footer */
+.footer {
+  background-color: #111;
+  color: var(--secondary-color);
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3 {
+  font-family: var(--font-heading);
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-col ul li {
+  margin-bottom: 15px;
+}
+
+.footer-col a {
+  color: #888;
+  font-weight: 400;
+}
+
+.footer-col a:hover {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  margin-right: 20px;
+  color: var(--secondary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  font-size: 0.8rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav {
+    display: none; 
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+      font-size: 1rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    border: 1px solid #fff;
+  }
+  
+  .newsletter-form button {
+      width: 100%;
+  }
+}
+    ]]></b:skin>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="PEQUENO PLANTA Logo" class="logo-img" />
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">HOME</a></li>
+                    <li><a href="#" class="nav-link">BREAD</a></li>
+                    <li><a href="#" class="nav-link">COOKIES</a></li>
+                    <li><a href="#" class="nav-link">CAKES</a></li>
+                    <li><a href="#" class="nav-link">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <a href="#" class="icon-link"><i class="fas fa-search"></i></a>
+                <a href="#" class="icon-link"><i class="fas fa-shopping-cart"></i><span class="cart-count">2</span></a>
+                <a href="#" class="icon-link"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">ARTISAN BREAD,<br />COOKIES &amp; CAKES</h1>
+            <p class="hero-subtitle">URBAN MADE. FRESH DAILY.</p>
+            <a href="#" class="btn btn-primary">ORDER NOW</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">OUR FAVORITES</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="bread.svg" alt="Sourdough Loaf" />
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">SOURDOUGH LOAF</h3>
+                        <p class="product-price">$8.00</p>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="cookie.svg" alt="Choco Chunk Cookie" />
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">CHOCO CHUNK</h3>
+                        <p class="product-price">$3.50</p>
+                    </div>
+                </article>
+
+                <!-- Product 3 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="cake.svg" alt="Red Velvet Slice" />
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">RED VELVET SLICE</h3>
+                        <p class="product-price">$6.00</p>
+                    </div>
+                </article>
+
+                 <!-- Product 4 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="bread.svg" alt="Rye Bread" />
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">RYE BREAD</h3>
+                        <p class="product-price">$9.00</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>STAY IN THE LOOP</h2>
+            <p>GET THE LATEST UPDATES ON NEW BAKES.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="ENTER YOUR EMAIL" />
+                <button type="submit" class="btn btn-secondary">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>PEQUENO PLANTA</h3>
+                <p>URBAN BAKERY EST. 2023</p>
+            </div>
+            <div class="footer-col">
+                <h3>LINKS</h3>
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">MENU</a></li>
+                    <li><a href="#">LOCATIONS</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>FOLLOW</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&#169; 2023 PEQUENO PLANTA. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+<b:section class='main' id='main' showaddelement='yes'/>
+</body>
+</html>
